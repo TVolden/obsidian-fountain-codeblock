@@ -147,3 +147,13 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+kanban/
+
+# kanban-md board and agent skills
+.claude/skills/kanban-md/
+.claude/skills/kanban-based-development/
+
+# Obsidian plugin build output
+main.js
+*.js.map
+data.json

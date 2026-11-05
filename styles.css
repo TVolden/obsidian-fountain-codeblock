@@ -1,0 +1,170 @@
+/*
+ * Fountain Codeblock — screenplay layout.
+ * Measurements follow the standard US screenplay page: 60 characters of
+ * 12pt Courier per line, so horizontal positions are expressed in `ch`.
+ */
+
+.fountain-block {
+	--fountain-font: 'Courier Prime', 'Courier Final Draft', 'Courier New', Courier, monospace;
+	--fountain-width: 60ch;
+
+	font-family: var(--fountain-font);
+	font-size: var(--font-text-size, 16px);
+	line-height: 1.2;
+	color: var(--text-normal);
+	max-width: calc(var(--fountain-width) + 4ch);
+	margin: 0 auto;
+	padding: 1em 2ch;
+	overflow-x: auto;
+}
+
+.fountain-block.fountain-page {
+	background-color: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s, 4px);
+	box-shadow: var(--shadow-s, 0 1px 4px rgba(0, 0, 0, 0.15));
+	padding: 2em 4ch;
+	max-width: calc(var(--fountain-width) + 8ch);
+}
+
+.fountain-block p,
+.fountain-block h1,
+.fountain-block h3 {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	margin: 0;
+	color: inherit;
+}
+
+.fountain-script {
+	max-width: var(--fountain-width);
+	margin: 0 auto;
+}
+
+/* Inline emphasis produced by fountain-js */
+.fountain-block .bold { font-weight: bold; }
+.fountain-block .italic { font-style: italic; }
+.fountain-block .underline { text-decoration: underline; }
+
+/* Title page */
+.fountain-title-page {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas:
+		'center center'
+		'left right';
+	row-gap: 3em;
+	padding-bottom: 2em;
+	margin-bottom: 2em;
+	border-bottom: 1px dashed var(--background-modifier-border);
+}
+.fountain-title-center { grid-area: center; text-align: center; }
+.fountain-title-left { grid-area: left; }
+.fountain-title-right { grid-area: right; text-align: right; }
+.fountain-title-center p { margin-top: 1em; }
+.fountain-block h1.fountain-title {
+	text-transform: uppercase;
+	font-weight: normal;
+	margin-bottom: 1em;
+}
+.fountain-title-page:empty,
+.fountain-title-page > div:empty { display: none; }
+
+/* Scene headings */
+.fountain-block h3.fountain-scene-heading {
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 1.2em 0 1.2em;
+	display: flex;
+	gap: 2ch;
+}
+.fountain-scene-text { flex: 1; }
+.fountain-scene-number { font-weight: normal; }
+.fountain-scene-number-right { text-align: right; }
+
+/* Action */
+.fountain-block p.fountain-action {
+	margin-bottom: 1.2em;
+	white-space: pre-wrap;
+}
+
+/* Dialogue */
+.fountain-dialogue { margin-bottom: 1.2em; }
+.fountain-block p.fountain-character {
+	margin-left: 22ch;
+	text-transform: uppercase;
+}
+.fountain-block p.fountain-parenthetical {
+	margin-left: 16ch;
+	max-width: 19ch;
+}
+.fountain-block p.fountain-dialogue-text {
+	margin-left: 10ch;
+	max-width: 35ch;
+}
+
+/* Dual dialogue: two columns side by side with reduced indents */
+.fountain-dual-dialogue {
+	display: flex;
+	gap: 2ch;
+	margin-bottom: 1.2em;
+}
+.fountain-dual-dialogue .fountain-dialogue {
+	flex: 1;
+	min-width: 0;
+	margin-bottom: 0;
+}
+.fountain-dual-dialogue p.fountain-character { margin-left: 8ch; }
+.fountain-dual-dialogue p.fountain-parenthetical { margin-left: 4ch; max-width: none; }
+.fountain-dual-dialogue p.fountain-dialogue-text { margin-left: 0; max-width: none; }
+
+/* Transitions, centered text, lyrics */
+.fountain-block p.fountain-transition {
+	text-align: right;
+	text-transform: uppercase;
+	margin: 1.2em 0;
+}
+.fountain-block p.fountain-centered {
+	text-align: center;
+	margin-bottom: 1.2em;
+}
+.fountain-block p.fountain-lyrics {
+	font-style: italic;
+	margin-left: 10ch;
+	margin-bottom: 1.2em;
+}
+
+/* Page break */
+.fountain-block hr.fountain-page-break {
+	border: none;
+	border-top: 1px dashed var(--background-modifier-border);
+	margin: 2em 0;
+}
+
+/* Outline elements (not part of the printed screenplay) */
+.fountain-section {
+	font-family: var(--font-interface);
+	color: var(--text-faint);
+	font-weight: 600;
+	margin: 1.5em 0 0.5em;
+}
+.fountain-section-1 { font-size: 1.2em; }
+.fountain-section-2 { font-size: 1.1em; }
+.fountain-block p.fountain-synopsis {
+	font-family: var(--font-interface);
+	color: var(--text-muted);
+	font-style: italic;
+	margin-bottom: 1em;
+}
+.fountain-block .fountain-note {
+	color: var(--text-accent);
+	background-color: var(--background-modifier-hover);
+	border-radius: var(--radius-s, 4px);
+	padding: 0 0.3ch;
+}
+.fountain-block p.fountain-note { margin-bottom: 1.2em; }
+
+/* Errors / empty */
+.fountain-block p.fountain-error-message { color: var(--text-error); margin-bottom: 0.5em; }
+.fountain-block p.fountain-empty { color: var(--text-faint); font-style: italic; }

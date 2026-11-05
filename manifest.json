@@ -1,0 +1,10 @@
+{
+	"id": "fountain-codeblock",
+	"name": "Fountain Codeblock",
+	"version": "1.0.0",
+	"minAppVersion": "1.4.0",
+	"description": "Render Fountain screenplay markup in fountain code blocks.",
+	"author": "Thomas Volden",
+	"authorUrl": "https://github.com/TVolden",
+	"isDesktopOnly": false
+}
